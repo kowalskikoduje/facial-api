@@ -2,14 +2,13 @@ import Descriptor from "../models/DescriptorModel.js";
 
 export const Scanner = async (req, res, _next) => {
   console.log("POST /scanner");
-
+  res.header("Access-Control-Allow-Origin", "*");
   try {
     const { label, descriptors } = req.body,
       newDescriptor = await Descriptor({
         label,
         descriptors,
       }).save();
-
     return res.json({
       msg: "Created descriptor succesfully",
       descriptor: newDescriptor,

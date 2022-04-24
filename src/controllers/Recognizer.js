@@ -7,7 +7,7 @@ import {
 
 export const Recognizer = async (req, res, _next) => {
   console.log("POST /recognizer");
-
+  res.header("Access-Control-Allow-Origin", "*");
   await loadModels();
 
   if (isFaceDetectionModelLoaded()) {
