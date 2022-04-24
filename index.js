@@ -15,7 +15,13 @@ configureMongo()
   .then(() => {
     console.log("Starting app...");
 
-    app.use(cors({ origin: ["http://localhost:3000", "https://facial.techchimp.co"] }));
+    const corsOptions = {
+      origin: 'https://facial.techchimp.co', 
+      credentials:true,            
+      optionSuccessStatus:200
+    };
+    app.use(cors(corsOptions));
+
     app.use(express.json());
     app.use(express.urlencoded({ extended: false }));
 
